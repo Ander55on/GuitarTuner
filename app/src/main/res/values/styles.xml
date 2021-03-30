@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name ="stringButtons" parent="Widget.AppCompat.Button">
+        <item name="android:background">@drawable/string_button_background</item>
+    </style>
+</resources>
