@@ -3,4 +3,10 @@
     <style name ="stringButtons" parent="Widget.AppCompat.Button">
         <item name="android:background">@drawable/string_button_background</item>
     </style>
+
+    <style name = "recordButton" parent="Widget.AppCompat.ImageButton">
+        <item name="android:src">@drawable/ic_record</item>
+        <item name ="android:background">@drawable/record_button_activated</item>
+    </style>
+
 </resources>
