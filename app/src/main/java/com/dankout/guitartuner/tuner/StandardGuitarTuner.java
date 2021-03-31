@@ -31,7 +31,7 @@ public class StandardGuitarTuner implements GuitarTuner {
 
 
     @Override
-    public boolean tune(int guitarString) {
+    public boolean tune(short[] audioData, int guitarString) {
         return false;
     }
 

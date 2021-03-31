@@ -36,6 +36,7 @@
     tools:context=".MainActivity">
 
     <Button
+        android:onClick="setActiveGuitarString"
         android:layout_marginTop="24dp"
         android:id="@+id/D_String_Button"
         style="@style/stringButtons"
@@ -48,6 +49,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
+        android:onClick="setActiveGuitarString"
         android:id="@+id/A_String_Button"
         style="@style/stringButtons"
         android:layout_width="@dimen/button_dim_width"
@@ -60,6 +62,7 @@
         app:layout_constraintTop_toBottomOf="@+id/D_String_Button" />
 
     <Button
+        android:onClick="setActiveGuitarString"
         android:id="@+id/E_Low_String_Button"
         style="@style/stringButtons"
         android:layout_width="@dimen/button_dim_width"
@@ -72,6 +75,7 @@
         app:layout_constraintTop_toBottomOf="@+id/A_String_Button" />
 
     <Button
+        android:onClick="setActiveGuitarString"
         android:layout_marginTop="24dp"
         android:id="@+id/G_String_Button"
         style="@style/stringButtons"
@@ -84,6 +88,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
+        android:onClick="setActiveGuitarString"
         android:id="@+id/B_String_Button"
         style="@style/stringButtons"
         android:layout_width="@dimen/button_dim_height"
@@ -96,6 +101,7 @@
         app:layout_constraintTop_toBottomOf="@+id/G_String_Button"/>
 
     <Button
+        android:onClick="setActiveGuitarString"
         android:id="@+id/E_High_String_Button"
         style="@style/stringButtons"
         android:layout_width="@dimen/button_dim_height"

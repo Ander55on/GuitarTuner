@@ -17,9 +17,9 @@ public class Guitar {
         this.tuner = tuner;
     }
 
-    public String tune(int guitarString) {
+    public String tune(short[] audioData, int guitarString) {
 
-        if(tuner.tune(guitarString)) {
+        if(tuner.tune(audioData, guitarString)) {
             return "String is in tune";
         } else {
             return "String not in tune";

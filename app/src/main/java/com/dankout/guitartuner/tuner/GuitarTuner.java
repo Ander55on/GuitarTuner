@@ -7,9 +7,10 @@ public interface GuitarTuner {
     float frequency();
 
     /**
+     * @param data audio data
      * @param guitarString to tune
      * @return true if the string is tuned
      * */
-    boolean tune(int guitarString);
+    boolean tune(short[] data, int guitarString);
 
 }
