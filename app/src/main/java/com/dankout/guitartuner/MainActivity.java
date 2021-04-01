@@ -22,9 +22,12 @@ public class MainActivity extends AppCompatActivity {
 
     private final String TAG = MainActivity.class.getSimpleName();
 
-    //Configurations for the Audio recorder
+    /*Configurations for the Audio recorder*/
+
+    // Amplitude values are recorded every 1/44100 second
     private static final int RECORDING_SAMPLE_RATE = 44100;
     private static final int AUDIO_CHANNEL_CONFIGURATION = AudioFormat.CHANNEL_IN_MONO;
+    //The pulse code modulation used to convert the analog signal into a digital signal
     private static final int AUDIO_FORMAT_ENCODING = AudioFormat.ENCODING_PCM_16BIT;
 
     //Request codes
