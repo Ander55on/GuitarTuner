@@ -102,9 +102,10 @@ public class MainActivity extends AppCompatActivity {
             //Since encoding is PCM_16bit we use the short array
             short[] audioData = new short[mBufferSize];
             mRecorder.read(audioData,0, mBufferSize);
-            String inTune = guitar.tune(audioData, mCurrentStringToTune);
+            String inTune = guitar.tune(audioData, mCurrentStringToTune, RECORDING_SAMPLE_RATE);
+            float freq = guitar.getFrequency();
 
-            runOnUiThread(() -> updateInTuneTextView(inTune));
+            runOnUiThread(() -> updateUI(inTune,freq));
 
         }
     }
@@ -135,8 +136,8 @@ public class MainActivity extends AppCompatActivity {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
     }
 
-    private void updateInTuneTextView(String text) {
-        inTuneTextView.setText(text);
+    private void updateUI(String text, float freq) {
+        inTuneTextView.setText(text + " " + freq);
     }
 
     public void setActiveGuitarString(View view) {

@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -9,127 +8,127 @@
     android:orientation="vertical">
 
     <androidx.cardview.widget.CardView
-        app:cardBackgroundColor="@color/blue_gray_light"
-        android:layout_weight="1"
         android:layout_width="match_parent"
-        android:layout_height="0dp">
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        app:cardBackgroundColor="@color/blue_gray_light">
 
         <TextView
             android:id="@+id/TextView_CurrentString"
-            android:textSize="32sp"
-            android:textAlignment="center"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textColor="@color/white"/>
+            android:textAlignment="center"
+            android:textColor="@color/white"
+            android:textSize="32sp" />
 
         <TextView
-            android:textColor="@color/white"
             android:id="@+id/TextView_inTune"
-            android:textSize="24sp"
-            android:textAlignment="center"
-            android:layout_gravity="center"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:textAlignment="center"
+            android:textColor="@color/white"
+            android:textSize="24sp" />
 
     </androidx.cardview.widget.CardView>
 
-<androidx.constraintlayout.widget.ConstraintLayout
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    tools:context=".MainActivity">
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:context=".MainActivity">
 
-    <Button
-        android:onClick="setActiveGuitarString"
-        android:layout_marginTop="24dp"
-        android:id="@+id/D_String_Button"
-        style="@style/stringButtons"
-        android:layout_width="@dimen/button_dim_width"
-        android:layout_height="@dimen/button_dim_height"
-        android:layout_marginStart="24dp"
-        android:text="@string/d_string"
-        android:textSize="24sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        <Button
+            android:id="@+id/D_String_Button"
+            style="@style/stringButtons"
+            android:layout_width="@dimen/button_dim_width"
+            android:layout_height="@dimen/button_dim_height"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="16dp"
+            android:onClick="setActiveGuitarString"
+            android:text="@string/d_string"
+            android:textSize="24sp"
+            app:layout_constraintBottom_toTopOf="@+id/imageButton"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/A_String_Button" />
 
-    <Button
-        android:onClick="setActiveGuitarString"
-        android:id="@+id/A_String_Button"
-        style="@style/stringButtons"
-        android:layout_width="@dimen/button_dim_width"
-        android:layout_height="@dimen/button_dim_height"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="16dp"
-        android:text="@string/a_string"
-        android:textSize="24sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/D_String_Button" />
+        <Button
+            android:id="@+id/A_String_Button"
+            style="@style/stringButtons"
+            android:layout_width="@dimen/button_dim_width"
+            android:layout_height="@dimen/button_dim_height"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="16dp"
+            android:onClick="setActiveGuitarString"
+            android:text="@string/a_string"
+            android:textSize="24sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/E_Low_String_Button" />
 
-    <Button
-        android:id="@+id/E_Low_String_Button"
-        style="@style/stringButtons"
-        android:layout_width="@dimen/button_dim_width"
-        android:layout_height="@dimen/button_dim_height"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="16dp"
-        android:onClick="setActiveGuitarString"
-        android:text="@string/e_String"
-        android:textSize="24sp"
-        app:layout_constraintBottom_toTopOf="@+id/imageButton"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/A_String_Button" />
+        <Button
+            android:id="@+id/E_Low_String_Button"
+            style="@style/stringButtons"
+            android:layout_width="@dimen/button_dim_width"
+            android:layout_height="@dimen/button_dim_height"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="24dp"
+            android:onClick="setActiveGuitarString"
+            android:text="@string/e_String"
+            android:textSize="24sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-    <Button
-        android:onClick="setActiveGuitarString"
-        android:layout_marginTop="24dp"
-        android:id="@+id/G_String_Button"
-        style="@style/stringButtons"
-        android:layout_width="@dimen/button_dim_height"
-        android:layout_height="@dimen/button_dim_width"
-        android:layout_marginEnd="24dp"
-        android:text="@string/g_String"
-        android:textSize="24sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        <Button
+            android:id="@+id/G_String_Button"
+            style="@style/stringButtons"
+            android:layout_width="@dimen/button_dim_height"
+            android:layout_height="@dimen/button_dim_width"
+            android:layout_marginTop="24dp"
+            android:layout_marginEnd="24dp"
+            android:onClick="setActiveGuitarString"
+            android:text="@string/g_String"
+            android:textSize="24sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-    <Button
-        android:onClick="setActiveGuitarString"
-        android:id="@+id/B_String_Button"
-        style="@style/stringButtons"
-        android:layout_width="@dimen/button_dim_height"
-        android:layout_height="@dimen/button_dim_width"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="24dp"
-        android:text="@string/b_String"
-        android:textSize="24sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/G_String_Button"/>
+        <Button
+            android:id="@+id/B_String_Button"
+            style="@style/stringButtons"
+            android:layout_width="@dimen/button_dim_height"
+            android:layout_height="@dimen/button_dim_width"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="24dp"
+            android:onClick="setActiveGuitarString"
+            android:text="@string/b_String"
+            android:textSize="24sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/G_String_Button" />
 
-    <Button
-        android:id="@+id/E_High_String_Button"
-        style="@style/stringButtons"
-        android:layout_width="@dimen/button_dim_height"
-        android:layout_height="@dimen/button_dim_width"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="24dp"
-        android:onClick="setActiveGuitarString"
-        android:text="@string/e_String"
-        android:textSize="24sp"
-        app:layout_constraintBottom_toTopOf="@+id/imageButton"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/B_String_Button" />
+        <Button
+            android:id="@+id/E_High_String_Button"
+            style="@style/stringButtons"
+            android:layout_width="@dimen/button_dim_height"
+            android:layout_height="@dimen/button_dim_width"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="24dp"
+            android:onClick="setActiveGuitarString"
+            android:text="@string/e_String"
+            android:textSize="24sp"
+            app:layout_constraintBottom_toTopOf="@+id/imageButton"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/B_String_Button" />
 
-    <ImageButton
-        android:id="@+id/imageButton"
-        style="@style/recordButton"
-        android:layout_width="@dimen/button_dim_width"
-        android:layout_height="@dimen/button_dim_height"
-        android:layout_gravity="center_horizontal"
-        android:onClick="record"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        android:layout_marginBottom="16dp"/>
+        <ImageButton
+            android:id="@+id/imageButton"
+            style="@style/recordButton"
+            android:layout_width="@dimen/button_dim_width"
+            android:layout_height="@dimen/button_dim_height"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginBottom="16dp"
+            android:onClick="record"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </LinearLayout>
