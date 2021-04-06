@@ -17,6 +17,10 @@ import android.widget.TextView;
 
 import com.dankout.guitartuner.tuner.StandardGuitarTuner;
 
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+
 
 public class MainActivity extends AppCompatActivity {
 
@@ -32,6 +36,8 @@ public class MainActivity extends AppCompatActivity {
 
     //Request codes
     private final int PERMISSION_RECORD_AUDIO_REQUEST_CODE = 1;
+
+    private final String CURRENT_STRING = "currentString";
 
     private int mBufferSize;
     private int mCurrentStringToTune;
@@ -57,6 +63,10 @@ public class MainActivity extends AppCompatActivity {
         if (mBufferSize == AudioRecord.ERROR_BAD_VALUE) {
             Log.e(TAG, "Recording parameters are not supported by " +
                     "the hardware or an invalid parameter was passed");
+        }
+
+        if(savedInstanceState != null) {
+            mCurrentStringToTune = savedInstanceState.getInt(CURRENT_STRING);
         }
 
     }
@@ -117,6 +127,12 @@ public class MainActivity extends AppCompatActivity {
         mRecorder = null;
     }
 
+    @Override
+    protected void onSaveInstanceState(@NonNull Bundle outState) {
+        outState.putInt(CURRENT_STRING, mCurrentStringToTune);
+        super.onSaveInstanceState(outState);
+    }
+
     private boolean hasRecordAudioPermission() {
 
         if (ContextCompat.checkSelfPermission(this,
@@ -141,9 +157,9 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void setActiveGuitarString(View view) {
+        deActivateAllStringButtons();
 
        if(view.getId() == R.id.A_String_Button) {
-
            mCurrentStringToTune = Guitar.A_STRING;
            currentStringTextView.setText(R.string.a_string);
 
@@ -172,5 +188,16 @@ public class MainActivity extends AppCompatActivity {
            currentStringTextView.setText(R.string.g_String);
        }
 
+        view.setActivated(true);
     }
+
+    private void deActivateAllStringButtons() {
+        findViewById(R.id.A_String_Button).setActivated(false);
+        findViewById(R.id.B_String_Button).setActivated(false);
+        findViewById(R.id.D_String_Button).setActivated(false);
+        findViewById(R.id.E_High_String_Button).setActivated(false);
+        findViewById(R.id.E_Low_String_Button).setActivated(false);
+        findViewById(R.id.G_String_Button).setActivated(false);
+    }
+
 }
