@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <style name ="stringButtons" parent="Widget.AppCompat.Button">
-        <item name="android:background">@drawable/string_button_activated</item>
+        <item name="android:background">@drawable/string_button_selector</item>
+
     </style>
 
     <style name = "recordButton" parent="Widget.AppCompat.ImageButton">
-        <item name="android:src">@drawable/ic_record</item>
-        <item name ="android:background">@drawable/record_button_activated</item>
+        <item name ="android:background">@drawable/record_button_selector</item>
+        <item name="android:src">@drawable/ic_record_selector</item>
     </style>
 
 </resources>

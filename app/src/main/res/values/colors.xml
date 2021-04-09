@@ -14,4 +14,8 @@
     <color name = "blue_gray_primary">#37474f</color>
 
     <color name ="record_color_red">#ff0000</color>
+
+    <color name ="backgroundSeries">#7Fadd8e6</color>
+
+    <color name ="string_button_tuned">#4bb543</color>
 </resources>

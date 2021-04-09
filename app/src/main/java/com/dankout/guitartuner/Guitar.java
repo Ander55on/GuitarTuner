@@ -17,13 +17,10 @@ public class Guitar {
         this.tuner = tuner;
     }
 
-    public String tune(short[] audioData, int guitarString, int samplingRate) {
+    public boolean tune(short[] audioData, int guitarString, int samplingRate) {
 
-        if(tuner.tune(audioData, guitarString,samplingRate)) {
-            return "String is in tune";
-        } else {
-            return "String not in tune";
-        }
+        return tuner.tune(audioData, guitarString,samplingRate);
+
     }
 
     public float getFrequency() {
