@@ -14,6 +14,7 @@ import android.media.MediaRecorder;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.dankout.guitartuner.tuner.StandardGuitarTuner;
@@ -48,12 +49,14 @@ public class MainActivity extends AppCompatActivity {
     private final int PERMISSION_RECORD_AUDIO_REQUEST_CODE = 1;
 
     private final String CURRENT_STRING = "currentString";
+    private final int MAX_PROGRESS = 10;
 
     private int mBufferSize;
     private int mCurrentStringToTune;
     private TextView mFrequencyTextView;
     private HashMap<Integer, View> mStringsAndViewsMap;
     private HashSet<Integer> mInTuneStrings;
+    private ProgressBar mProgressBar;
 
     //GraphView
     private LineGraphSeries<DataPoint> mSeries;
@@ -61,7 +64,7 @@ public class MainActivity extends AppCompatActivity {
     private final int MAX_DATA_POINTS = 100;
 
     private double noiseLeveldB = 0;
-    private final int THRESH_HOLD_dB = 20;
+    private final int THRESH_HOLD_dB = 10;
 
     private AudioRecord mRecorder = null;
     private Guitar guitar;
@@ -81,6 +84,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         mFrequencyTextView = findViewById(R.id.TextView_inTune);
+        mProgressBar = findViewById(R.id.progress_bar);
 
         //GraphView init
         GraphView mGraphView = findViewById(R.id.graphView);
@@ -236,15 +240,35 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void updateUI(float freq, boolean inTune) {
+        int currentProgress = mProgressBar.getProgress();
+
         if (inTune) {
+
+            if (currentProgress != mProgressBar.getMax()) {
+                currentProgress += 2;
+            }
+
+        } else {
+
+            if (currentProgress != 0) {
+                currentProgress--;
+            }
+
+        }
+
+        if (currentProgress == mProgressBar.getMax()) {
             mInTuneStrings.add(mCurrentStringToTune);
             mStringsAndViewsMap.get(mCurrentStringToTune).setActivated(true);
         }
+
         if (mInTuneStrings.contains(mCurrentStringToTune)) {
             mFrequencyTextView.setText("In Tune");
+            currentProgress = MAX_PROGRESS;
         } else {
             mFrequencyTextView.setText(freq + " HZ");
         }
+
+        mProgressBar.setProgress(currentProgress);
     }
 
     public void setActiveGuitarString(View view) {
@@ -273,8 +297,9 @@ public class MainActivity extends AppCompatActivity {
             mCurrentStringToTune = Guitar.G_STRING;
         }
 
+        mProgressBar.setProgress(0);
         view.setSelected(true);
-        //view.setActivated(true);
+
     }
 
     private void deActivateAllStringButtons() {
