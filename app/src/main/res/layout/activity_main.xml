@@ -54,17 +54,17 @@
             android:layout_width="@dimen/button_dim_width"
             android:layout_height="@dimen/button_dim_height"
             android:layout_marginStart="24dp"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="24dp"
             android:onClick="setActiveGuitarString"
             android:text="@string/d_string"
             android:textColor="@drawable/text_color_button"
             android:textSize="24sp"
-            app:layout_constraintBottom_toTopOf="@+id/imageButton"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/A_String_Button" />
+            app:layout_constraintTop_toTopOf="parent" />
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/A_String_Button"
+
             style="@style/stringButtons"
             android:layout_width="@dimen/button_dim_width"
             android:layout_height="@dimen/button_dim_height"
@@ -75,7 +75,7 @@
             android:textColor="@drawable/text_color_button"
             android:textSize="24sp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/E_Low_String_Button" />
+            app:layout_constraintTop_toBottomOf="@+id/D_String_Button" />
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/E_Low_String_Button"
@@ -83,13 +83,14 @@
             android:layout_width="@dimen/button_dim_width"
             android:layout_height="@dimen/button_dim_height"
             android:layout_marginStart="24dp"
-            android:layout_marginTop="24dp"
+            android:layout_marginTop="16dp"
             android:onClick="setActiveGuitarString"
             android:text="@string/e_String"
             android:textColor="@drawable/text_color_button"
             android:textSize="24sp"
+            app:layout_constraintBottom_toTopOf="@+id/imageButton"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toBottomOf="@+id/A_String_Button" />
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/G_String_Button"
