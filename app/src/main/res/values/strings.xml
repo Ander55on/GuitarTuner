@@ -5,4 +5,5 @@
     <string name="e_String">E</string>
     <string name="g_String">G</string>
     <string name="b_String">B</string>
+    <string name="reset">Reset</string>
 </resources>

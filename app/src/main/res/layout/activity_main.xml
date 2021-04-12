@@ -88,7 +88,7 @@
             android:text="@string/e_String"
             android:textColor="@drawable/text_color_button"
             android:textSize="24sp"
-            app:layout_constraintBottom_toTopOf="@+id/imageButton"
+            app:layout_constraintBottom_toTopOf="@+id/recordButton"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/A_String_Button" />
 
@@ -131,12 +131,12 @@
             android:text="@string/e_String"
             android:textColor="@drawable/text_color_button"
             android:textSize="24sp"
-            app:layout_constraintBottom_toTopOf="@+id/imageButton"
+            app:layout_constraintBottom_toTopOf="@+id/recordButton"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/B_String_Button" />
 
         <ImageButton
-            android:id="@+id/imageButton"
+            android:id="@+id/recordButton"
             style="@style/recordButton"
             android:layout_width="@dimen/button_dim_width"
             android:layout_height="@dimen/button_dim_height"

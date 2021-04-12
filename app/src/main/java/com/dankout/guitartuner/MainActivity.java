@@ -13,10 +13,14 @@ import android.media.AudioRecord;
 import android.media.MediaRecorder;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
+import com.dankout.guitartuner.soundMeter.SoundMeter;
 import com.dankout.guitartuner.tuner.StandardGuitarTuner;
 import com.jjoe64.graphview.GraphView;
 import com.jjoe64.graphview.GridLabelRenderer;
@@ -24,6 +28,7 @@ import com.jjoe64.graphview.series.DataPoint;
 import com.jjoe64.graphview.series.LineGraphSeries;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Deque;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -78,6 +83,8 @@ public class MainActivity extends AppCompatActivity {
     private final int CALIBRATION_TIME = 1000;
     private long startTime;
 
+    private SoundMeter dBMeter;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -108,6 +115,7 @@ public class MainActivity extends AppCompatActivity {
         mStringsAndViewsMap.put(Guitar.HIGH_E_STRING, (View) findViewById(R.id.E_High_String_Button));
 
         setActiveGuitarString(findViewById(R.id.E_Low_String_Button));
+        dBMeter = new SoundMeter();
 
         mInTuneStrings = new HashSet<>();
 
@@ -124,6 +132,23 @@ public class MainActivity extends AppCompatActivity {
         if (savedInstanceState != null) {
             mCurrentStringToTune = savedInstanceState.getInt(CURRENT_STRING);
         }
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.menu, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        if(item.getItemId() == R.id.reset_option) {
+            stopRecording();
+            reset();
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
     }
 
     public void record(View view) {
@@ -168,13 +193,7 @@ public class MainActivity extends AppCompatActivity {
             int readSize = mRecorder.read(audioData, 0, mBufferSize);
 
             //Calibrate the current room noise levels for reference
-            long sum = 0;
-            for (int i = 0; i < mBufferSize; i++) {
-                sum += audioData[i] * audioData[i];
-            }
-
-            double mean = sum / (double) readSize;
-            double dB = 10 * Math.log10(mean);
+            double dB = dBMeter.decibelReading(audioData, mBufferSize, readSize);
 
             if (currentState == CALIBRATION_STATE) {
                 if ((System.nanoTime() - startTime) / Math.pow(10, 6) > CALIBRATION_TIME) {
@@ -211,9 +230,11 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void stopRecording() {
-        mRecorder.stop();
-        mRecorder.release(); //Releases the native AudioRecord resources
-        mRecorder = null;
+        if(mRecorder != null) {
+            mRecorder.stop();
+            mRecorder.release(); //Releases the native AudioRecord resources
+            mRecorder = null;
+        }
     }
 
     @Override
@@ -300,6 +321,14 @@ public class MainActivity extends AppCompatActivity {
         mProgressBar.setProgress(0);
         view.setSelected(true);
 
+    }
+
+    private void reset() {
+        currentState = CALIBRATION_STATE;
+        mInTuneStrings.clear();
+        deActivateAllStringButtons();
+        setActiveGuitarString(findViewById(R.id.D_String_Button));
+        findViewById(R.id.recordButton).setActivated(false);
     }
 
     private void deActivateAllStringButtons() {
